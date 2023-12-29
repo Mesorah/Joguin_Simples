@@ -20,7 +20,7 @@ def vida():
             while vida_mostro != 0:
                 ataque = str(input('Aperte p para atacar: ')).lower()
                 tot += 1
-                if tot > 1:
+                if tot > 1 and vida_jogador < 10:
                     if cura > 0:
                         poçao = int(input(f'Você tem {cura} poções de cura. Precione 1 para tomar uma poção de cura: '))
                         if poçao == 1:

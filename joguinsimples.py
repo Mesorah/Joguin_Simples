@@ -33,13 +33,15 @@ def vida():
                     chance_acerto = randint(0,1)
                     if chance_acerto == 0:
                         vida_mostro = vida_mostro - 3
-                        print(f'vida do monstro: {vida_mostro}')
+                        print('o monstro tomou 3 de dano')
+                        print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
                         if vida_mostro <= 0:
                             print('voce venceu')
                             break
                     else:
                         vida_jogador = vida_jogador - 4
-                        print(f'vida do jogador: {vida_jogador}')
+                        print('você tomou 4 de dano')
+                        print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
                     if vida_jogador <= 0:
                         print('voce perdeu')
                         break

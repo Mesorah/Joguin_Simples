@@ -33,27 +33,29 @@ def vida():
                 else:   
                     chance_acerto = randint(0,1)
                     critico_pessoa = randint(1, 10)
-                    if chance_acerto == 0:
-                        if critico_pessoa == 1:
-                            vida_mostro -= vida_mostro - 6       
-                            print(f'\033[1;31mVocê deu um CRÍTICO de 6 de dano\033[m.')
-                            print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')                 
-                        vida_mostro -= 3
-                        print(f'\033[1;32mo monstro tomou 3 de dano\033[m')
-                        print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
-                        
-                        if vida_mostro <= 0:
-                            print('voce venceu')
-                            break
+                    if critico_pessoa == 1:
+                        vida_mostro -= 6    
+                        print(f'\033[1;31mVocê deu um CRÍTICO de 6 de dano\033[m.')
+                        print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}') 
                     else:
-                        critico_boss = randint(1,10)
-                        if critico_boss == 1:
-                            vida_jogador -= 8
-                            print(f'\033[1;31mVocê tomou um CRÍTICO de 8 de dano\033[m.')
+                        if chance_acerto == 0:                 
+                            vida_mostro -= 3
+                            print(f'\033[1;32mo monstro tomou 3 de dano\033[m')
                             print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
-                        vida_jogador = vida_jogador - 4
-                        print(f'\033[1;31mVocê tomou 4 de dano\033[m.')
-                        print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
+                        
+                            if vida_mostro <= 0:
+                                print('voce venceu')
+                                break
+                        else:
+                            critico_boss = randint(0,1)
+                            if critico_boss == 1:
+                                vida_jogador -= 8
+                                print(f'\033[1;31mVocê tomou um CRÍTICO de 8 de dano\033[m.')
+                                print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
+                            else:
+                                vida_jogador = vida_jogador - 4
+                                print(f'\033[1;31mVocê tomou 4 de dano\033[m.')
+                                print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
                     if vida_jogador <= 0:
                         print('voce perdeu')
                         break
@@ -61,3 +63,4 @@ def vida():
 
 main()
 vida()
+

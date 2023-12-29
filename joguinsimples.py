@@ -1,10 +1,10 @@
 #Jogo simples com apenas um bixo, o jogo n tem história, e sendo um jogo de turnos
 from random import randint
 def main():
-    print('Luta 1x1 contra The mega of The Blaster of The World')
-    print('Você com 10 de vida de 3 de dano contra ele com 25 de vida e 4 de dano')
-    print('você tem 3 pots de cura que curam 4 de vida')
-    print('você e o boss tem 10% de chance de tomar e dar crítico dando o dobro de dano')
+    print('\033[1;33mLuta 1x1 contra The Mega of The Blaster of The World')
+    print('Você tem 10 de vida e causa 3 de dano contra ele com 25 de vida e causa 4 de dano')
+    print('Você tem 3 poções de cura que curam 4 pontos de vida')
+    print('Você e o boss têm 10% de chance de dar e receber críticos, causando o dobro de dano\033')
 def vida():
     vida_jogador = 10
     vida_mostro = 25
@@ -13,51 +13,51 @@ def vida():
     tot = 0
 
     if começa == 1 or começa == 2:
-        print('voce começa')
+        print('VVôce começa')
         ataque = 'a'
 
         while ataque != 'p':
             while vida_mostro != 0:
-                ataque = str(input('aperte p para atacar: ')).lower()
+                ataque = str(input('Aperte p para atacar: ')).lower()
                 tot += 1
                 if tot > 1:
                     if cura > 0:
-                        poçao = int(input(f'você tem {cura} poções de cura precione 1 para tomar uma poção de cura: '))
+                        poçao = int(input(f'Você tem {cura} poções de cura. Precione 1 para tomar uma poção de cura: '))
                         if poçao == 1:
                             cura -= 1
                             vida_jogador += 4
                             print(f'Você usou uma poção de cura. Poções restantes: {cura}')
-                            print(f'\033[1;33mvocê recuperou 4 pontos de vida\033[m')
+                            print(f'\033[1;33mVocê recuperou 4 pontos de vida\033[m')
                 if ataque not in 'p':
-                    print('erro')
+                    print('Erro')
                 else:   
                     chance_acerto = randint(0,1)
                     critico_pessoa = randint(1, 10)
                     if critico_pessoa == 1:
                         vida_mostro -= 6    
                         print(f'\033[1;31mVocê deu um CRÍTICO de 6 de dano\033[m.')
-                        print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}') 
+                        print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}') 
                     else:
                         if chance_acerto == 0:                 
                             vida_mostro -= 3
-                            print(f'\033[1;32mo monstro tomou 3 de dano\033[m')
-                            print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
+                            print(f'\033[1;32mO monstro tomou 3 de dano\033[m')
+                            print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
                         
                             if vida_mostro <= 0:
-                                print('voce venceu')
+                                print('Você venceu')
                                 break
                         else:
                             critico_boss = randint(1,10)
                             if critico_boss == 1:
                                 vida_jogador -= 8
                                 print(f'\033[1;31mVocê tomou um CRÍTICO de 8 de dano\033[m.')
-                                print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
+                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
                             else:
                                 vida_jogador = vida_jogador - 4
                                 print(f'\033[1;31mVocê tomou 4 de dano\033[m.')
-                                print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
+                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
                     if vida_jogador <= 0:
-                        print('voce perdeu')
+                        print('Você perdeu')
                         break
 
 

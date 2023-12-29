@@ -26,21 +26,21 @@ def vida():
                             cura -= 1
                             vida_jogador += 4
                             print(f'Você usou uma poção de cura. Poções restantes: {cura}')
-                            print(f'voce recuperou 4 pontos de vida')
+                            print(f'\033[1;33mvocê recuperou 4 pontos de vida\033[m')
                 if ataque not in 'p':
                     print('erro')
                 else:   
                     chance_acerto = randint(0,1)
                     if chance_acerto == 0:
                         vida_mostro = vida_mostro - 3
-                        print('o monstro tomou 3 de dano')
+                        print(f'\033[1;32mo monstro tomou 3 de dano\033[m')
                         print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
                         if vida_mostro <= 0:
                             print('voce venceu')
                             break
                     else:
                         vida_jogador = vida_jogador - 4
-                        print('você tomou 4 de dano')
+                        print(f'\033[1;31mVocê tomou 4 de dano\033[m.')
                         print(f'sua vida {vida_jogador}  \ vida do monstro: {vida_mostro}')
                     if vida_jogador <= 0:
                         print('voce perdeu')

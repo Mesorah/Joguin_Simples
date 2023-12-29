@@ -47,7 +47,7 @@ def vida():
                                 print('voce venceu')
                                 break
                         else:
-                            critico_boss = randint(0,1)
+                            critico_boss = randint(1,10)
                             if critico_boss == 1:
                                 vida_jogador -= 8
                                 print(f'\033[1;31mVocê tomou um CRÍTICO de 8 de dano\033[m.')
@@ -63,4 +63,3 @@ def vida():
 
 main()
 vida()
-

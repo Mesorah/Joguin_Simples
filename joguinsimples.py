@@ -9,6 +9,7 @@ def vida():
     vida_mostro = 25
     começa = randint(1,2)
     cura = 3
+    tot = 0
 
     if começa == 1 or começa == 2:
         print('voce começa')
@@ -17,13 +18,15 @@ def vida():
         while ataque != 'p':
             while vida_mostro != 0:
                 ataque = str(input('aperte p para atacar: ')).lower()
-                if cura > 0:
-                    poçao = int(input(f'você tem {cura} poções de cura precione 1 para tomar uma poção de cura: '))
-                    if poçao == 1:
-                        cura -= 1
-                        vida_jogador += 4
-                        print(f'Você usou uma poção de cura. Poções restantes: {cura}')
-                        print(f'voce recuperou 4 pontos de vida')
+                tot += 1
+                if tot > 1:
+                    if cura > 0:
+                        poçao = int(input(f'você tem {cura} poções de cura precione 1 para tomar uma poção de cura: '))
+                        if poçao == 1:
+                            cura -= 1
+                            vida_jogador += 4
+                            print(f'Você usou uma poção de cura. Poções restantes: {cura}')
+                            print(f'voce recuperou 4 pontos de vida')
                 if ataque not in 'p':
                     print('erro')
                 else:   

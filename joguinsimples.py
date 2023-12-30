@@ -6,7 +6,9 @@ def main():
     print('Você tem 10 de vida e causa 3 de dano contra ele com 25 de vida e causa 4 de dano')
     print('Você tem 3 poções de cura que curam 4 pontos de vida')
     print('Você e o boss têm 10% de chance de dar e receber críticos, causando o dobro de dano')
-    print('Você tem 75% de chance de se esquivar, mas você da 2 de dano e se você não se esquivar você toma 3 de dano\033[m')
+    print('Você tem 75% de chance de se esquivar, mas você da 2 de dano e se você não se esquivar você toma 3 de dano')
+    print('Se você conseguir 2 ataque seguidos você usa o super causando 5 de dano')
+    print('Tem 10% de chance de você ou o monstro se esquivar automáticamente\033[m')
 def vida():
     vida_jogador = 10
     vida_mostro = 25
@@ -39,7 +41,6 @@ def vida():
                             if chance_esquiva == 1 or chance_esquiva == 2:
                                 vida_mostro -= 2
                                 print(f'\033[1;34mVocê se esquivou para a esquerda e deu 2 de dano Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m')
-                            
                             else:
                                 vida_jogador -= 3
                                 print(f'\033[1;31mvocê não conseguiu se esquivar e tomou 3 de dano Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m')
@@ -65,34 +66,33 @@ def vida():
                     print()
                 else:   
                     #usar aqui
-                    chance_desvio_automatico = randint(1, 5)
+                    chance_desvio_automatico = randint(1, 2)
                     chance_acerto_monstro = randint(0,1)
                     chance_acerto_jogador = randint(0,1)
                     critico_pessoa = randint(1, 10)
+                    #desvio automatico
                     if chance_desvio_automatico == 1:
+                        c = vida_jogador
                         print(f'você se desviou Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
-                        ataque = str(input('Aperte p para atacar ou e para esquivar: ')).lower()
                     elif chance_desvio_automatico == 2:
+                        d = vida_mostro
                         print(f'o monstro se desviou Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
-                        ataque = str(input('Aperte p para atacar ou e para esquivar: ')).lower()
-                    if critico_pessoa == 1:
+                    if critico_pessoa == 1 and chance_desvio_automatico != 2:
                         vida_mostro -= 6    
                         print(f'\033[1;35mVocê deu um CRÍTICO de 6 de dano\033[m.')
                         print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}') 
                     else:
-                        if chance_acerto_monstro == 0:  
+                        if chance_acerto_monstro == 0 and chance_desvio_automatico != 2:  
                             if super.count(1) < 2:  
                                 vida_mostro -= 3
                                 print(f'\033[1;32mO monstro tomou 3 de dano\033[m')
-                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
-                                ataque = str(input('Aperte p para atacar ou e para esquivar: ')).lower() 
+                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')   
                             #ataque normal pessoa 
                             carregado = 2
                             super.append(1)
                             if super.count(1) == 2:
                                 vida_mostro -= 5
                                 print(f'voce usou o super Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
-                                ataque = str(input('Aperte p para atacar ou e para esquivar: ')).lower()
                                 while carregado != 0:
                                     super.remove(1)
                                     carregado -= 1                       
@@ -101,12 +101,12 @@ def vida():
                             break
                         else:
                             critico_boss = randint(1,10)
-                            if critico_boss == 1:
+                            if critico_boss == 1 and chance_desvio_automatico != 1:
                                 #ataque crítico
                                 vida_jogador -= 8
                                 print(f'\033[1;31mVocê tomou um CRÍTICO de 8 de dano\033[m.')
                                 print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
-                            else:
+                            elif chance_acerto_monstro == 1 and chance_desvio_automatico != 1:
                                 #ataque normal boss
                                 super.append(0) 
                                 if 1 in super:

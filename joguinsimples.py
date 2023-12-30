@@ -1,4 +1,5 @@
 #Jogo simples com apenas um bixo, o jogo n tem história, e sendo um jogo de turnos
+#chance para esquivar da direita pra esquerda
 from random import randint
 def main():
     print('\033[1;33mLuta 1x1 contra The Mega of The Blaster of The World')
@@ -13,7 +14,7 @@ def vida():
     tot = 0
 
     if começa == 1 or começa == 2:
-        print('VVôce começa')
+        print('VVocê começa')
         ataque = 'a'
 
         while ataque != 'p':
@@ -59,7 +60,6 @@ def vida():
                     if vida_jogador <= 0:
                         print('Você perdeu')
                         break
-
 
 main()
 vida()

@@ -13,7 +13,7 @@ def vida():
     vida_jogador = 10
     vida_mostro = 25
     começa = randint(1,2)
-    cura = 3
+    cura = 30
     tot = 0
     super = []
 
@@ -96,24 +96,24 @@ def vida():
                                 while carregado != 0:
                                     super.remove(1)
                                     carregado -= 1                       
-                        if vida_mostro <= 0:
-                            print(f'\033[1;34mVocê venceu meu parabéns 🥳😎\033[m')
-                            break
-                        else:
-                            critico_boss = randint(1,10)
-                            if critico_boss == 1 and chance_desvio_automatico != 1:
-                                #ataque crítico
-                                vida_jogador -= 8
-                                print(f'\033[1;31mVocê tomou um CRÍTICO de 8 de dano\033[m.')
-                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
-                            elif chance_acerto_monstro == 1 and chance_desvio_automatico != 1:
-                                #ataque normal boss
-                                super.append(0) 
-                                if 1 in super:
-                                    super.pop(0)
-                                vida_jogador = vida_jogador - 4
-                                print(f'\033[1;31mVocê tomou 4 de dano\033[m.')
-                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
+                    if vida_mostro <= 0:
+                        print(f'\033[1;34mVocê venceu meu parabéns 🥳😎\033[m')
+                        break
+                    else:
+                        critico_boss = randint(1,10)
+                        if critico_boss == 1 and chance_desvio_automatico != 1:
+                            #ataque crítico
+                            vida_jogador -= 8
+                            print(f'\033[1;31mVocê tomou um CRÍTICO de 8 de dano\033[m.')
+                            print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
+                        elif chance_acerto_monstro == 1 and chance_desvio_automatico != 1:
+                            #ataque normal boss
+                            super.append(0) 
+                            if 1 in super:
+                                super.pop(0)
+                            vida_jogador = vida_jogador - 4
+                            print(f'\033[1;31mVocê tomou 4 de dano\033[m.')
+                            print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
                     if vida_jogador <= 0:
                         print('Você perdeu que pena... 😢🙁')
                         break

@@ -35,7 +35,7 @@ def vida():
                     critico_pessoa = randint(1, 10)
                     if critico_pessoa == 1:
                         vida_mostro -= 6    
-                        print(f'\033[1;31mVocê deu um CRÍTICO de 6 de dano\033[m.')
+                        print(f'\033[1;35mVocê deu um CRÍTICO de 6 de dano\033[m.')
                         print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}') 
                     else:
                         if chance_acerto == 0:                 

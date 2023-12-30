@@ -1,9 +1,5 @@
 #Jogo simples com apenas um bixo, o jogo n tem história, e sendo um jogo de turnos
-#super
 #chance de se esquivar automatico
-#quando acertao o ATAQUE 2 vezes utiliza automaticamente o super
-#se o jogador tomar dano o processo do super reinicia
-#o erro ta quando o if verifca q tem menos 2 esta funcionando mais é que o pop exclui antes
 from random import randint
 def main():
     print('\033[1;33mLuta 1x1 contra The Mega of The Blaster of The World')
@@ -51,7 +47,6 @@ def vida():
                         else:
                             print('erro')
                 tot += 1
-                #colocar o while para q quando a pessoa escrever "p" crasha
                 if tot > 1 and vida_jogador < 10:
                     if cura > 0:
                         while True:
@@ -94,7 +89,7 @@ def vida():
                                     super.remove(1)
                                     carregado -= 1                       
                         if vida_mostro <= 0:
-                            print('Você venceu')
+                            print(f'\033[1;34mVocê venceu meu parabéns 🥳😎\033[m')
                             break
                         else:
                             critico_boss = randint(1,10)

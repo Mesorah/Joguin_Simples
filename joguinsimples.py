@@ -2,6 +2,7 @@
 #super
 #chance de se esquivar automatico
 #quando acertao o ATAQUE 2 vezes utiliza automaticamente o super
+#se o jogador tomar dano o processo do super reinicia
 from random import randint
 def main():
     print('\033[1;33mLuta 1x1 contra The Mega of The Blaster of The World')

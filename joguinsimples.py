@@ -48,7 +48,7 @@ def vida():
                             print('erro')
                 tot += 1
                 if tot > 1 and vida_jogador < 10:
-                    if cura > 0:
+                    if cura > 0 and vida_jogador <=6:
                         while True:
                             poçao = str(input(f'\033[1;32mVocê tem {cura} poções de cura. Precione 1 para tomar uma poção de cura e 2 para não tomar:\033[m '))
                             if poçao == '1':
@@ -75,7 +75,7 @@ def vida():
                     else:
                         #o bug que nao volta pra selecionar se bate ou esquiva
                         if chance_acerto_monstro == 0:  
-                            if super.count(1) < 2:    
+                            if super.count(1) < 2:  
                                 vida_mostro -= 3
                                 print(f'\033[1;32mO monstro tomou 3 de dano\033[m')
                                 print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')

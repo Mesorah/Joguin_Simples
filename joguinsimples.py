@@ -1,14 +1,14 @@
 #Jogo simples com apenas um bixo, o jogo n tem história, e sendo um jogo de turnos
 #super
-#esquivou azul
-#nao se esquivou vermelho
+#chance de se esquivar automatico
+#quando acertao o ATAQUE 2 vezes utiliza automaticamente o super
 from random import randint
 def main():
     print('\033[1;33mLuta 1x1 contra The Mega of The Blaster of The World')
     print('Você tem 10 de vida e causa 3 de dano contra ele com 25 de vida e causa 4 de dano')
     print('Você tem 3 poções de cura que curam 4 pontos de vida')
     print('Você e o boss têm 10% de chance de dar e receber críticos, causando o dobro de dano')
-    print('Você tem 75% de chance de se esquivar, mas você da 3 de dano e se você não se esquivar você toma 3 de dano\033[m]')
+    print('Você tem 75% de chance de se esquivar, mas você da 3 de dano e se você não se esquivar você toma 3 de dano\033[m')
 def vida():
     vida_jogador = 10
     vida_mostro = 25
@@ -30,16 +30,16 @@ def vida():
                         lado = str(input('direita ou esquerda: ')).lower()
                         if lado == 'direita':
                             if chance_esquiva == 1 or chance_esquiva == 2:
-                                vida_mostro -= 3
-                                print(f'\033[1;34mVocê se esquivou para a direita e deu 3 de dano Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m]')
+                                vida_mostro -= 2
+                                print(f'\033[1;34mVocê se esquivou para a direita e deu 3 de dano Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m')
                             else:
                                 vida_jogador -= 3
-                                print(f'\033[1;31mvocê não conseguiu se esquivar e tomou 3 de dano Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m]')
+                                print(f'\033[1;31mvocê não conseguiu se esquivar e tomou 3 de dano Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m')
                             break
                         elif lado == 'esquerda':
                             if chance_esquiva == 1 or chance_esquiva == 2:
-                                vida_mostro -= 3
-                                print(f'\033[1;34mVocê se esquivou para a esquerda e deu 3 de dano Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m]')
+                                vida_mostro -= 2
+                                print(f'\033[1;34mVocê se esquivou para a esquerda e deu 3 de dano Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m')
                             
                             else:
                                 vida_jogador -= 3
@@ -59,14 +59,16 @@ def vida():
                 if ataque not in 'p':
                     print()
                 else:   
-                    chance_acerto = randint(0,1)
+                    #usar aqui
+                    chance_acerto_monstro = randint(0,1)
+                    chance_acerto_jogador = randint(0,1)
                     critico_pessoa = randint(1, 10)
                     if critico_pessoa == 1:
                         vida_mostro -= 6    
                         print(f'\033[1;35mVocê deu um CRÍTICO de 6 de dano\033[m.')
                         print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}') 
                     else:
-                        if chance_acerto == 0:                 
+                        if chance_acerto_monstro == 0:                 
                             vida_mostro -= 3
                             print(f'\033[1;32mO monstro tomou 3 de dano\033[m')
                             print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')

@@ -46,7 +46,7 @@ def vida():
                             
                             else:
                                 vida_jogador -= 3
-                                print(f'\033[1;31mvocê não conseguiu se esquivar e tomou 3 de dano Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m]')
+                                print(f'\033[1;31mvocê não conseguiu se esquivar e tomou 3 de dano Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m')
                             break
                         else:
                             print('erro')
@@ -54,12 +54,18 @@ def vida():
                 #colocar o while para q quando a pessoa escrever "p" crasha
                 if tot > 1 and vida_jogador < 10:
                     if cura > 0:
-                        poçao = int(input(f'Você tem {cura} poções de cura. Precione 1 para tomar uma poção de cura: '))
-                        if poçao == 1:
-                            cura -= 1
-                            vida_jogador += 4
-                            print(f'Você usou uma poção de cura. Poções restantes: {cura}')
-                            print(f'\033[1;33mVocê recuperou 4 pontos de vida\033[m')
+                        while True:
+                            poçao = str(input(f'\033[1;32mVocê tem {cura} poções de cura. Precione 1 para tomar uma poção de cura e 2 para não tomar:\033[m '))
+                            if poçao == '1':
+                                cura -= 1
+                                vida_jogador += 4
+                                print(f'Você usou uma poção de cura. Poções restantes: {cura}')
+                                print(f'\033[1;36mVocê recuperou 4 pontos de vida\033[m')
+                                break
+                            elif poçao == '2':
+                                break
+                            else:
+                                print('Erro: digite "1" para tomar poção ou "2" para não tomar.')
                 if ataque not in 'p':
                     print()
                 else:   
@@ -72,6 +78,7 @@ def vida():
                         print(f'\033[1;35mVocê deu um CRÍTICO de 6 de dano\033[m.')
                         print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}') 
                     else:
+                        #o bug que nao volta pra selecionar se bate ou esquiva
                         if chance_acerto_monstro == 0:  
                             if super.count(1) < 2:    
                                 vida_mostro -= 3
@@ -82,13 +89,13 @@ def vida():
                             super.append(1)
                             if super.count(1) == 2:
                                 vida_mostro -= 5
-                                print('voce usou o super')
+                                print(f'voce usou o super Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
                                 while carregado != 0:
                                     super.remove(1)
                                     carregado -= 1                       
-                            if vida_mostro <= 0:
-                                print('Você venceu')
-                                break
+                        if vida_mostro <= 0:
+                            print('Você venceu')
+                            break
                         else:
                             critico_boss = randint(1,10)
                             if critico_boss == 1:
@@ -101,7 +108,6 @@ def vida():
                                 super.append(0) 
                                 if 1 in super:
                                     super.pop(0)
-                                print(super)
                                 vida_jogador = vida_jogador - 4
                                 print(f'\033[1;31mVocê tomou 4 de dano\033[m.')
                                 print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')

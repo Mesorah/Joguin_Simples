@@ -90,7 +90,7 @@ def vida():
                             #ataque normal pessoa 
                             carregado = 2
                             super.append(1)
-                            print(f'{super.count(1)} / 2')
+                            print(f'\033[1;36m{super.count(1)}/2 para carregar o super\033[m')
                             if super.count(1) == 2:
                                 vida_mostro -= 5
                                 print(f'\033[1;35mvoce usou o super Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m')

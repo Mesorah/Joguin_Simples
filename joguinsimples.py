@@ -3,6 +3,7 @@
 #chance de se esquivar automatico
 #quando acertao o ATAQUE 2 vezes utiliza automaticamente o super
 #se o jogador tomar dano o processo do super reinicia
+#o erro ta quando o if verifca q tem menos 2 esta funcionando mais é que o pop exclui antes
 from random import randint
 def main():
     print('\033[1;33mLuta 1x1 contra The Mega of The Blaster of The World')
@@ -72,20 +73,19 @@ def vida():
                         print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}') 
                     else:
                         if chance_acerto_monstro == 0:  
+                            if super.count(1) < 2:    
+                                vida_mostro -= 3
+                                print(f'\033[1;32mO monstro tomou 3 de dano\033[m')
+                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}') 
                             #ataque normal pessoa 
                             carregado = 2
-                            super.append(1)  
+                            super.append(1)
                             if super.count(1) == 2:
                                 vida_mostro -= 5
                                 print('voce usou o super')
                                 while carregado != 0:
                                     super.remove(1)
-                                    carregado -= 1
-                            print(super)    
-                            if super.count(1) < 2:        
-                                vida_mostro -= 3
-                                print(f'\033[1;32mO monstro tomou 3 de dano\033[m')
-                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')                       
+                                    carregado -= 1                       
                             if vida_mostro <= 0:
                                 print('Você venceu')
                                 break

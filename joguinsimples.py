@@ -78,7 +78,8 @@ def vida():
                             if super.count(1) < 2:    
                                 vida_mostro -= 3
                                 print(f'\033[1;32mO monstro tomou 3 de dano\033[m')
-                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}') 
+                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
+                                ataque = str(input('Aperte p para atacar ou e para esquivar: ')).lower() 
                             #ataque normal pessoa 
                             carregado = 2
                             super.append(1)
@@ -107,7 +108,7 @@ def vida():
                                 print(f'\033[1;31mVocê tomou 4 de dano\033[m.')
                                 print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
                     if vida_jogador <= 0:
-                        print('Você perdeu')
+                        print('Você perdeu que pena... 😢🙁')
                         break
 
 main()

@@ -61,22 +61,22 @@ def vida():
                             elif poçao == '2':
                                 break
                             else:
-                                print('Erro: digite "1" para tomar poção ou "2" para não tomar.')
+                                print('\033[1;31mErro: digite "1" para tomar poção ou "2" para não tomar./033[m')
                 if ataque not in 'p':
                     print()
                 else:   
                     #usar aqui
-                    chance_desvio_automatico = randint(1, 2)
+                    chance_desvio_automatico = randint(1, 10)
                     chance_acerto_monstro = randint(0,1)
                     chance_acerto_jogador = randint(0,1)
                     critico_pessoa = randint(1, 10)
                     #desvio automatico
                     if chance_desvio_automatico == 1:
                         c = vida_jogador
-                        print(f'você se desviou Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
+                        print(f'\033[1;36mvocê se desviou Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m')
                     elif chance_desvio_automatico == 2:
                         d = vida_mostro
-                        print(f'o monstro se desviou Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
+                        print(f'\033[1;37mo monstro se desviou Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m')
                     if critico_pessoa == 1 and chance_desvio_automatico != 2:
                         vida_mostro -= 6    
                         print(f'\033[1;35mVocê deu um CRÍTICO de 6 de dano\033[m.')
@@ -92,7 +92,7 @@ def vida():
                             super.append(1)
                             if super.count(1) == 2:
                                 vida_mostro -= 5
-                                print(f'voce usou o super Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
+                                print(f'\033[1;35mvoce usou o super Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}\033[m')
                                 while carregado != 0:
                                     super.remove(1)
                                     carregado -= 1                       
@@ -101,12 +101,12 @@ def vida():
                         break
                     else:
                         critico_boss = randint(1,10)
-                        if critico_boss == 1 and chance_desvio_automatico != 1:
+                        if critico_boss == 1 and chance_desvio_automatico != 1 and chance_acerto_jogador != 0:
                             #ataque crítico
                             vida_jogador -= 8
                             print(f'\033[1;31mVocê tomou um CRÍTICO de 8 de dano\033[m.')
                             print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
-                        elif chance_acerto_monstro == 1 and chance_desvio_automatico != 1:
+                        elif chance_acerto_monstro == 1 and chance_desvio_automatico != 1 and critico_pessoa != 1:
                             #ataque normal boss
                             super.append(0) 
                             if 1 in super:
@@ -115,7 +115,7 @@ def vida():
                             print(f'\033[1;31mVocê tomou 4 de dano\033[m.')
                             print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
                     if vida_jogador <= 0:
-                        print('Você perdeu que pena... 😢🙁')
+                        print('\033[0;31mVocê perdeu que pena... 😢🙁\033[m')
                         break
 
 main()

@@ -16,6 +16,7 @@ def vida():
     começa = randint(1,2)
     cura = 3
     tot = 0
+    super = []
 
     if começa == 1 or começa == 2:
         print('Você começa')
@@ -49,6 +50,7 @@ def vida():
                         else:
                             print('erro')
                 tot += 1
+                #colocar o while para q quando a pessoa escrever "p" crasha
                 if tot > 1 and vida_jogador < 10:
                     if cura > 0:
                         poçao = int(input(f'Você tem {cura} poções de cura. Precione 1 para tomar uma poção de cura: '))
@@ -69,7 +71,17 @@ def vida():
                         print(f'\033[1;35mVocê deu um CRÍTICO de 6 de dano\033[m.')
                         print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}') 
                     else:
-                        if chance_acerto_monstro == 0:                 
+                        if chance_acerto_monstro == 0:  
+                            #ataque normal pessoa 
+                            carregado = 2
+                            super.append(1)  
+                            if super.count(1) == 2:
+                                vida_mostro -= 5
+                                print('voce usou o super')
+                                while carregado != 0:
+                                    super.remove(1)
+                                    carregado -= 1
+                            print(super)            
                             vida_mostro -= 3
                             print(f'\033[1;32mO monstro tomou 3 de dano\033[m')
                             print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
@@ -80,10 +92,16 @@ def vida():
                         else:
                             critico_boss = randint(1,10)
                             if critico_boss == 1:
+                                #ataque crítico
                                 vida_jogador -= 8
                                 print(f'\033[1;31mVocê tomou um CRÍTICO de 8 de dano\033[m.')
                                 print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
                             else:
+                                #ataque normal boss
+                                super.append(0) 
+                                if 1 in super:
+                                    super.pop(0)
+                                print(super)
                                 vida_jogador = vida_jogador - 4
                                 print(f'\033[1;31mVocê tomou 4 de dano\033[m.')
                                 print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')

@@ -81,11 +81,11 @@ def vida():
                                 while carregado != 0:
                                     super.remove(1)
                                     carregado -= 1
-                            print(super)            
-                            vida_mostro -= 3
-                            print(f'\033[1;32mO monstro tomou 3 de dano\033[m')
-                            print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')
-                        
+                            print(super)    
+                            if super.count(1) < 2:        
+                                vida_mostro -= 3
+                                print(f'\033[1;32mO monstro tomou 3 de dano\033[m')
+                                print(f'Sua vida {vida_jogador} \ Vida do monstro: {vida_mostro}')                       
                             if vida_mostro <= 0:
                                 print('Você venceu')
                                 break

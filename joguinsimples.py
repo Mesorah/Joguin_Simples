@@ -20,7 +20,7 @@ def vida():
     if começa == 1 or começa == 2:
         print('Você começa')
         ataque = 'a'
-
+        chance_esquiva = 0
         while ataque != 'p' and vida_jogador > 0:
             while vida_mostro != 0 and vida_jogador > 0:
                 ataque = str(input('Aperte p para atacar ou e para esquivar: ')).lower()

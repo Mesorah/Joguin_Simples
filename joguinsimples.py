@@ -1,5 +1,3 @@
-#Jogo simples com apenas um bixo, o jogo n tem história, e sendo um jogo de turnos
-#chance de se esquivar automatico
 from random import randint
 def main():
     print('\033[1;33mLuta 1x1 contra The Mega of The Blaster of The World')
@@ -65,7 +63,6 @@ def vida():
                 if ataque != 'p' and (chance_esquiva != 1 or chance_esquiva != 2 or chance_esquiva != 3):
                     continue
                 else:   
-                    #usar aqui
                     chance_desvio_automatico = randint(1, 10)
                     chance_acerto_monstro = randint(0,1)
                     chance_acerto_jogador = randint(0,1)
